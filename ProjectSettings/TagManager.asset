@@ -5,8 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shootable
-  - Ball
-  - PistolMagazine
   layers:
   - Default
   - TransparentFX
@@ -16,14 +14,14 @@ TagManager:
   - UI
   - 
   - 
-  - Grab
-  - Reticle
-  - Ground
   - Body
-  - Magazine
+  - Hands
   - 
-  - Lever Base
-  - Lever
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
