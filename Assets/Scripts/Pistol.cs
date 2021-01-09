@@ -13,13 +13,15 @@ public class Pistol : MonoBehaviour
     public AudioClip audioClip;
     public LayerMask gunHitLayer;
 
-
-    private int numberOfAmmo = 10;
+    private Magazine currentMagazine;
+    public int numberOfAmmo;
     private Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        numberOfAmmo = 0;
+        currentMagazine = null;
     }
 
     private void Update()
@@ -27,9 +29,22 @@ public class Pistol : MonoBehaviour
         Debug.DrawRay(gunPoint.position, gunPoint.forward * range, Color.green);
 
     }
+
+    public void AddNewMagazine(Magazine mag)
+    {
+        currentMagazine = mag;
+        numberOfAmmo = currentMagazine.GetAmmo();
+    }
+
+    public void RemoveMagazine()
+    {
+        currentMagazine.SetAmmo(numberOfAmmo);
+        numberOfAmmo = 0;
+        currentMagazine = null;
+    }
     public void PullTrigger()
     {
-        if (numberOfAmmo <= 0) return;
+        if (numberOfAmmo <= 0 || currentMagazine == null) return;
         animator.SetTrigger("Shoot");
         numberOfAmmo--;
 
